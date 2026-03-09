@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artwork</title>
+
+<style>
+body{
+font-family:Arial;
+margin:0;
+background:#f5f5f5;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px;
+background:white;
+}
+
+img{
+width:100%;
+border-radius:10px;
+}
+
+h1{
+margin-top:20px;
+}
+
+button{
+background:black;
+color:white;
+border:none;
+padding:12px 20px;
+cursor:pointer;
+border-radius:5px;
+margin-top:15px;
+}
+
+button:hover{
+background:#333;
+}
+
+.back{
+margin-bottom:20px;
+display:inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a class="back" href="index.html">← Back to gallery</a>
+
+<img id="artImage">
+
+<h1 id="title"></h1>
+
+<p id="description"></p>
+
+<h3 id="price"></h3>
+
+<button onclick="buy()">Buy</button>
+
+</div>
+
+<script>
+
+const artworks = {
+
+art1:{
+title:"London Lights",
+price:"£40",
+image:"images/art1.jpg",
+description:"A vibrant cityscape capturing the glow of London at night with reflections and motion."
+},
+
+art2:{
+title:"City Motion",
+price:"£55",
+image:"images/art2.jpg",
+description:"An abstract urban painting inspired by movement, traffic and city energy."
+}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const art = artworks[id];
+
+document.getElementById("title").innerText = art.title;
+document.getElementById("price").innerText = art.price;
+document.getElementById("description").innerText = art.description;
+document.getElementById("artImage").src = art.image;
+
+function buy(){
+alert("Connect this button to Stripe or PayPal checkout.");
+}
+
+</script>
+
+</body>
+</html>
